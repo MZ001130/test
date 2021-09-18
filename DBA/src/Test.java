@@ -1,0 +1,47 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String connectionURL = "jdbc:sqlserver://localhost:1433;database=hospReg;user=sa;password=minPassw0rd;";
+		
+		try {
+
+			Connection connection = DriverManager.getConnection(connectionURL);
+
+			 
+
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Employee");
+
+			 
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			 
+
+			while (resultSet.next()) {
+
+			System.out.println("Name: " + resultSet.getString("empSalary"));
+			System.out.println("Name: "+ resultSet.getString("empID"));
+
+			}
+
+			 
+
+			} catch (SQLException ex) {
+
+			ex.printStackTrace();
+
+			 System.out.println("Error! Någonting gick fel...");
+
+			}
+
+	}
+
+}
